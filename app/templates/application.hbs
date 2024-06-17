@@ -1,7 +1,59 @@
 {{page-title "ModalThingy"}}
 
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
+<AuApp>
+    <AuMainHeader @brandLink="https://www.vlaanderen.be/nl" @appTitle="Kaleidos">
+        <AuButton @skin="link" @icon="login">
+            Aanmelden
+        </AuButton>
+    </AuMainHeader>
+    <AuMainContainer as |m|>
+        <m.content @scroll={{true}}>
+            <AuContentHeader @titlePartOne="Vlaanderen" @titlePartTwo="is lokaal bestuur">
+            </AuContentHeader>
+
+            <section class="au-o-region-large">
+                <div class="au-o-layout">
+                    <div class="au-o-grid au-o-grid--small">
+                        <div class="au-o-grid__item au-u-3-4@small au-u-1-2@medium">
+                            <AuContent @skin="large">
+                                <h1>Een ministerraad vinden</h1>
+                                <p class="au-c-heading au-c-heading--4">Een webapplicatie die helpt bij het plannen en
+                                    opvolgen van de agenda van de Vlaamse Regering.</p>
+                                <p>Zoek naar een specifieke ministerraad om te zien welke onderwerpen er zijn of zullen
+                                    worden besproken</p>
+                            </AuContent>
+                        </div>
+                        <div
+                            class="au-o-grid__item au-u-1-4@small au-u-1-2@medium au-u-text-right@medium au-u-flex au-u-flex--column au-u-flex--vertical-end au-u-flex--spaced-small">
+                            <AuButton @icon="search" @iconAlignment="left">
+                                Zoeken
+                            </AuButton>
+
+                            {{!-- <SuccessfulButton>
+                                Extended component test
+                            </SuccessfulButton> --}}
+
+                            {{!-- <button onclick=console.log('yo') class="au-c-button au-c-button--primary">
+                                Simple button test
+                            </button> --}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </m.content>
+        <AuModalContainer />
+        <AuModal @modalOpen={{false}} @closable={{true}} @overflow={{true}}>
+            <:title>Een ministerraad vinden</:title>
+            <:body>
+                <p>Kies een datum</p>
+                <AuDatePicker />
+            </:body>
+            <:footer>
+                <AuButton>Kiezen</AuButton>
+            </:footer>
+        </AuModal>
+    </AuMainContainer>
+</AuApp>
+
 
 {{outlet}}
