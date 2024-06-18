@@ -25,7 +25,7 @@
                         </div>
                         <div
                             class="au-o-grid__item au-u-1-4@small au-u-1-2@medium au-u-text-right@medium au-u-flex au-u-flex--column au-u-flex--vertical-end au-u-flex--spaced-small">
-                            <AuButton @icon="search" @iconAlignment="left">
+                            <AuButton @icon="search" @iconAlignment="left" {{on "click" (fn (mut this.isOpen))}}>
                                 Zoeken
                             </AuButton>
 
@@ -42,7 +42,7 @@
             </section>
         </m.content>
         <AuModalContainer />
-        <AuModal @modalOpen={{false}} @closable={{true}} @overflow={{true}}>
+        <AuModal @modalOpen={{this.isOpen}} @closeModal={{(fn (mut this.isOpen))}} @closable={{true}} @overflow={{true}}>
             <:title>Een ministerraad vinden</:title>
             <:body>
                 <p>Kies een datum</p>
